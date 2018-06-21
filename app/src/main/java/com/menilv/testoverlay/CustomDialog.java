@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 public class CustomDialog extends Dialog {
   private View referencedView;
-
+  private boolean showSkip = false;
   public CustomDialog(@NonNull Context context) {
     super(context);
   }
@@ -27,20 +27,23 @@ public class CustomDialog extends Dialog {
   }
 
   @Override public void show() {
-    HighlightView view = findViewById(R.id.view);
+    HighlightView view = findViewById(R.id.highlighted_view);
     view.setHighlightView(referencedView, 100);
 
-    TextView tv = this.findViewById(R.id.textx);
-
-    RelativeLayout.LayoutParams params =
-        new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT);
-
+    //region title setup
+    TextView title = this.findViewById(R.id.title);
+    RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
     params.leftMargin = referencedView.getLeft();
     params.topMargin = referencedView.getTop() + 180;
     params.width = referencedView.getWidth();
-    tv.setGravity(Gravity.CENTER);
-    tv.setLayoutParams(params);
+    title.setGravity(Gravity.CENTER);
+    title.setLayoutParams(params);
+    //endregion
+
+    //region skip button setup
+    if(showSkip)
+      findViewById(R.id.skip).setVisibility(View.VISIBLE);
+    //endregion
 
     super.show();
   }
@@ -48,5 +51,9 @@ public class CustomDialog extends Dialog {
   public void setViewReference(View v) {
     if (v == null) throw new NullPointerException("view cannot be null");
     referencedView = v;
+  }
+
+  public void setSkipButton(){
+    this.showSkip = true;
   }
 }
