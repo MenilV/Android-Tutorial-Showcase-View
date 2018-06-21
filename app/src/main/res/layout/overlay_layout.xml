@@ -13,7 +13,7 @@
       android:scaleType="fitXY"
       />
 
-  <com.menilv.testoverlay.CircleOverlayView
+  <com.menilv.testoverlay.HighlightView
       android:id="@+id/cicleOverlay"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
