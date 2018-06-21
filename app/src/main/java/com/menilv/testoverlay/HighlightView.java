@@ -20,7 +20,6 @@ public class HighlightView extends LinearLayout {
   private int right;
   private int bottom;
   private int top;
-  private Context context;
   private int actionbarHeight;
 
   public HighlightView(Context context) {
@@ -56,39 +55,6 @@ public class HighlightView extends LinearLayout {
     drawBackground(osCanvas);
 
     highlightView(osCanvas);
-
-    //putTitle(osCanvas);
-    //
-    //putDescription(osCanvas);
-    //
-    //putButton(osCanvas);
-  }
-
-  private void putButton(Canvas osCanvas) {
-    Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    paint.setColor(getResources().getColor(R.color.white));
-    RectF rectF = new RectF(left, top, right, bottom);
-    osCanvas.drawRect(rectF, paint);
-
-    Paint paint1 = new Paint(Paint.ANTI_ALIAS_FLAG);
-    paint1.setColor(getResources().getColor(R.color.black));
-    paint1.setTextSize(40);
-    paint1.setTextAlign(Paint.Align.LEFT);
-    osCanvas.drawText("Button", left + 20, bottom, paint1);
-  }
-
-  private void putTitle(Canvas osCanvas) {
-    Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    paint.setColor(getResources().getColor(R.color.white));
-    paint.setTextSize(122);
-    osCanvas.drawText("title", left, bottom + 120, paint);
-  }
-
-  private void putDescription(Canvas osCanvas) {
-    Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    paint.setColor(getResources().getColor(R.color.white));
-    paint.setTextSize(90);
-    osCanvas.drawText("description", left, bottom + 220, paint);
   }
 
   private void drawBackground(Canvas osCanvas) {
@@ -124,7 +90,6 @@ public class HighlightView extends LinearLayout {
     this.bottom = v.getBottom();
     this.top = v.getTop();
 
-    this.context = v.getContext();
     this.actionbarHeight = actionbarHeight;
   }
 
@@ -135,7 +100,6 @@ public class HighlightView extends LinearLayout {
     this.right = right;
     this.bottom = bottom;
 
-    this.context = context;
     this.actionbarHeight = actionbarHeight;
   }
 }
