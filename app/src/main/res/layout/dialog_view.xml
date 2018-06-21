@@ -33,10 +33,10 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_small"
         android:gravity="center"
         android:textColor="@color/white"
         android:textSize="20sp"
-        android:layout_marginTop="@dimen/padding_small"
         android:visibility="gone"
         tools:text="This is a title"
         />
@@ -67,11 +67,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/padding_small"
-        android:minHeight="@dimen/minimum_button_height"
-        tools:text="Next"
-        android:visibility="gone"
         android:drawableEnd="@drawable/smallarrowrightblack"
         android:drawablePadding="@dimen/padding_small"
+        android:gravity="center"
+        android:minHeight="@dimen/minimum_button_height"
+        android:visibility="gone"
+        tools:text="Next"
+        style="@style/CustomButtonStyle"
         />
 
   </LinearLayout>
