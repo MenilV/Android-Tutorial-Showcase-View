@@ -19,7 +19,6 @@ import com.menilv.testoverlay.utils.DisplayMetricsConverter;
 
 public class CustomDialog extends Dialog {
 
-  private View referencedView;
   private Context context;
 
   private String titleText;
@@ -36,6 +35,11 @@ public class CustomDialog extends Dialog {
 
   private String customButtonText;
   private boolean showCustomButton;
+
+  private int left;
+  private int top;
+  private int right;
+  private int bottom;
 
   private View.OnClickListener onSkipClickListener;
   private View.OnClickListener onCustomButtonClickListener;
@@ -79,27 +83,27 @@ public class CustomDialog extends Dialog {
     ActionBar actionBar = ((MainActivity) context).getSupportActionBar();
     int actionbarHeight = actionBar == null ? 0 : actionBar.getHeight();
 
-    view.setHighlightView(referencedView, actionbarHeight);
+    view.setHighlightView(left, top, right, bottom, view.getContext(), actionbarHeight);
 
     LinearLayout linearLayout = findViewById(R.id.container);
     RelativeLayout.LayoutParams params =
         new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
             ViewGroup.LayoutParams.WRAP_CONTENT);
-    params.leftMargin = referencedView.getLeft();
+    params.leftMargin = left;
     if (tutorialPosition == TUTORIAL_POSITION.ABOVE) {
-      params.topMargin = referencedView.getTop()
+      params.topMargin = top
           - DisplayMetricsConverter.dpToPx(
           linearLayout.getContext().getResources().getDimension(R.dimen.padding_medium),
           linearLayout.getContext())
           - actionbarHeight;
     } else {
-      params.topMargin = referencedView.getTop()
+      params.topMargin = top
           + DisplayMetricsConverter.dpToPx(
           linearLayout.getContext().getResources().getDimension(R.dimen.padding_medium),
           linearLayout.getContext())
           + actionbarHeight;
     }
-    params.width = referencedView.getWidth();
+    params.width = right - left;
     linearLayout.setGravity(Gravity.CENTER);
     linearLayout.setLayoutParams(params);
 
@@ -153,9 +157,20 @@ public class CustomDialog extends Dialog {
     super.show();
   }
 
-  public CustomDialog setViewReference(View v) {
+  public CustomDialog setHighlightedView(View v) {
     if (v == null) throw new NullPointerException("view cannot be null");
-    referencedView = v;
+    this.left = v.getLeft();
+    this.top = v.getTop();
+    this.right = v.getRight();
+    this.bottom = v.getBottom();
+    return this;
+  }
+
+  public CustomDialog setHighlightedBounds(int left, int top, int right, int bottom) {
+    this.left = left;
+    this.top = top;
+    this.right = right;
+    this.bottom = bottom;
     return this;
   }
 

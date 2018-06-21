@@ -14,7 +14,6 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 
-
 public class HighlightView extends LinearLayout {
   private Bitmap bitmap;
   private int left;
@@ -22,7 +21,7 @@ public class HighlightView extends LinearLayout {
   private int bottom;
   private int top;
   private Context context;
-  private int height;
+  private int actionbarHeight;
 
   public HighlightView(Context context) {
     super(context);
@@ -75,37 +74,38 @@ public class HighlightView extends LinearLayout {
     paint1.setColor(getResources().getColor(R.color.black));
     paint1.setTextSize(40);
     paint1.setTextAlign(Paint.Align.LEFT);
-    osCanvas.drawText("Button", left+20, bottom, paint1);
+    osCanvas.drawText("Button", left + 20, bottom, paint1);
   }
 
-  private void putTitle (Canvas osCanvas){
+  private void putTitle(Canvas osCanvas) {
     Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     paint.setColor(getResources().getColor(R.color.white));
     paint.setTextSize(122);
-    osCanvas.drawText("title", left, bottom+120, paint);
+    osCanvas.drawText("title", left, bottom + 120, paint);
   }
 
-  private void putDescription (Canvas osCanvas){
+  private void putDescription(Canvas osCanvas) {
     Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     paint.setColor(getResources().getColor(R.color.white));
     paint.setTextSize(90);
-    osCanvas.drawText("description", left, bottom+220, paint);
+    osCanvas.drawText("description", left, bottom + 220, paint);
   }
 
-  private void drawBackground(Canvas osCanvas){
+  private void drawBackground(Canvas osCanvas) {
     RectF background = new RectF(0, 0, getWidth(), getHeight());
     Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    paint.setColor(getResources().getColor(R.color.gray));
-    paint.setAlpha(200);
+    paint.setColor(getResources().getColor(R.color.black));
+    paint.setAlpha(190);
     osCanvas.drawRect(background, paint);
   }
 
-  private void highlightView(Canvas osCanvas){
+  private void highlightView(Canvas osCanvas) {
     Paint paint2 = new Paint(Paint.ANTI_ALIAS_FLAG);
     paint2.setColor(Color.TRANSPARENT);
     paint2.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_OUT));
     int padding = 10;
-    RectF rect = new RectF(left-padding, top-padding + height, right+padding, bottom+padding+height);
+    RectF rect = new RectF(left - padding, top - padding + actionbarHeight, right + padding,
+        bottom + padding + actionbarHeight);
     osCanvas.drawRect(rect, paint2);
   }
 
@@ -119,12 +119,23 @@ public class HighlightView extends LinearLayout {
   }
 
   public void setHighlightView(View v, int actionbarHeight) {
-    this.left= v.getLeft();
-    this.right= v.getRight();
-    this.bottom= v.getBottom();
-    this.top= v.getTop();
+    this.left = v.getLeft();
+    this.right = v.getRight();
+    this.bottom = v.getBottom();
+    this.top = v.getTop();
 
     this.context = v.getContext();
-    this.height = actionbarHeight;
+    this.actionbarHeight = actionbarHeight;
+  }
+
+  public void setHighlightView(int left, int top, int right, int bottom, Context context,
+      int actionbarHeight) {
+    this.left = left;
+    this.top = top;
+    this.right = right;
+    this.bottom = bottom;
+
+    this.context = context;
+    this.actionbarHeight = actionbarHeight;
   }
 }
