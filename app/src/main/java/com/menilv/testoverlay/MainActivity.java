@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,9 +19,12 @@ public class MainActivity extends AppCompatActivity {
     dialog.setCanceledOnTouchOutside(false);
     dialog.setCancelable(false);
 
+    final TextView textView = findViewById(R.id.text);
+
     findViewById(R.id.text).post(new Runnable() {
       @Override public void run() {
-        dialog.setViewReference(findViewById(R.id.text))
+        dialog.setHighlightedBounds(textView.getLeft(), textView.getTop(), textView.getRight(),
+            textView.getBottom())
             .setTitleText("TITLE!!!")
             .setDescriptionText("DESCRIPTION TEXT TEXT TEXT TEXT TEXT")
             .setOnSkipClickListener(new View.OnClickListener() {
