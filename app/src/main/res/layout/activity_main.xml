@@ -25,9 +25,4 @@
       android:textColor="@android:color/white"
       />
 
-  <!--<com.menilv.testoverlay.NewOverlayLayout-->
-      <!--android:id="@+id/newlayout"-->
-      <!--android:layout_width="match_parent"-->
-      <!--android:layout_height="match_parent"-->
-      <!--/>-->
 </RelativeLayout>
