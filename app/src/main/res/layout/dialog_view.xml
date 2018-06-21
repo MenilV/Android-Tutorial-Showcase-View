@@ -1,23 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/parent_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/transparent"
     >
   <com.menilv.testoverlay.HighlightView
-      android:id="@+id/view"
+      android:id="@+id/highlighted_view"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       />
 
   <TextView
-      android:id="@+id/textx"
+      android:id="@+id/title"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="This is a dialog"
-      android:textColor="@color/white"
-      android:background="#f00"
+      tools:text="This is a title"
+      />
+  <TextView
+      android:id="@+id/description"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      tools:text="This is a description"
+      />
+
+  <ImageView
+      android:id="@+id/image_1"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      />
+
+  <ImageView
+      android:id="@+id/image_2"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      />
+
+  <android.support.v7.widget.AppCompatButton
+      android:id="@+id/skip"
+      android:layout_width="wrap_content"
+      android:layout_height="30dp"
+      android:text="Skip"
+      android:visibility="gone"
+      tools:visibility="visible"
+      style="@style/SkipButtonStyle"
       />
 </RelativeLayout>
