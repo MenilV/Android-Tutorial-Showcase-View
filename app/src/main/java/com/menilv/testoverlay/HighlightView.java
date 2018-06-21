@@ -95,7 +95,7 @@ public class HighlightView extends LinearLayout {
   private void drawBackground(Canvas osCanvas){
     RectF background = new RectF(0, 0, getWidth(), getHeight());
     Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    paint.setColor(getResources().getColor(R.color.black));
+    paint.setColor(getResources().getColor(R.color.gray));
     paint.setAlpha(200);
     osCanvas.drawRect(background, paint);
   }
