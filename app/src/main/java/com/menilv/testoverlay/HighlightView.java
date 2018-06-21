@@ -15,7 +15,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 
-public class CircleOverlayView extends LinearLayout {
+public class HighlightView extends LinearLayout {
   private Bitmap bitmap;
   private int left;
   private int right;
@@ -24,20 +24,20 @@ public class CircleOverlayView extends LinearLayout {
   private Context context;
   private int height;
 
-  public CircleOverlayView(Context context) {
+  public HighlightView(Context context) {
     super(context);
   }
 
-  public CircleOverlayView(Context context, AttributeSet attrs) {
+  public HighlightView(Context context, AttributeSet attrs) {
     super(context, attrs);
   }
 
-  public CircleOverlayView(Context context, AttributeSet attrs, int defStyleAttr) {
+  public HighlightView(Context context, AttributeSet attrs, int defStyleAttr) {
     super(context, attrs, defStyleAttr);
   }
 
   @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-  public CircleOverlayView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+  public HighlightView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
     super(context, attrs, defStyleAttr, defStyleRes);
   }
 

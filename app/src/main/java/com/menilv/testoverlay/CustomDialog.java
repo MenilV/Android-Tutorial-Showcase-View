@@ -11,7 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class CustomDialog extends Dialog {
-  private View referedView;
+  private View referencedView;
 
   public CustomDialog(@NonNull Context context) {
     super(context);
@@ -27,9 +27,8 @@ public class CustomDialog extends Dialog {
   }
 
   @Override public void show() {
-    RelativeLayout rl = (RelativeLayout) findViewById(R.id.parent_view);
-    CircleOverlayView view = findViewById(R.id.view);
-    view.setHighlightView(referedView,100);
+    HighlightView view = findViewById(R.id.view);
+    view.setHighlightView(referencedView, 100);
 
     TextView tv = this.findViewById(R.id.textx);
 
@@ -37,18 +36,17 @@ public class CustomDialog extends Dialog {
         new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
             ViewGroup.LayoutParams.WRAP_CONTENT);
 
-    params.leftMargin = referedView.getLeft();
-    params.topMargin = referedView.getTop() + 180;
-    params.width = referedView.getWidth();
+    params.leftMargin = referencedView.getLeft();
+    params.topMargin = referencedView.getTop() + 180;
+    params.width = referencedView.getWidth();
     tv.setGravity(Gravity.CENTER);
     tv.setLayoutParams(params);
-
-
 
     super.show();
   }
 
   public void setViewReference(View v) {
-    referedView = v;
+    if (v == null) throw new NullPointerException("view cannot be null");
+    referencedView = v;
   }
 }
