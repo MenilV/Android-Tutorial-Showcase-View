@@ -89,7 +89,7 @@ public class CustomDialog extends Dialog {
     LinearLayout linearLayout = findViewById(R.id.container);
     RelativeLayout.LayoutParams params =
         new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT);
+            ViewGroup.LayoutParams.MATCH_PARENT);
 
     if (viewSet) {
       params.leftMargin = left;
@@ -106,9 +106,10 @@ public class CustomDialog extends Dialog {
             linearLayout.getContext())
             + actionbarHeight;
       }
-      params.width = right - left;
+      params.width = ViewGroup.LayoutParams.WRAP_CONTENT;
     } else {
-      params.addRule(RelativeLayout.CENTER_IN_PARENT);
+      params.topMargin = context.getResources().getDisplayMetrics().heightPixels / 2;
+      params.addRule(RelativeLayout.CENTER_HORIZONTAL);
     }
 
     linearLayout.setGravity(Gravity.CENTER);
