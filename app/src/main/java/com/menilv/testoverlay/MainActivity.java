@@ -23,8 +23,9 @@ public class MainActivity extends AppCompatActivity {
 
     findViewById(R.id.text).post(new Runnable() {
       @Override public void run() {
-        dialog.setHighlightedBounds(textView.getLeft(), textView.getTop(), textView.getRight(),
-            textView.getBottom())
+        dialog
+            //.setHighlightedBounds(textView.getLeft(), textView.getTop(), textView.getRight(),
+            //textView.getBottom())
             .setTitleText("TITLE!!!")
             .setDescriptionText("DESCRIPTION TEXT TEXT TEXT TEXT TEXT")
             .setOnSkipClickListener(new View.OnClickListener() {
