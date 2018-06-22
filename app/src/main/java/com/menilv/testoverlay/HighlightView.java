@@ -69,9 +69,9 @@ public class HighlightView extends LinearLayout {
     Paint paint2 = new Paint(Paint.ANTI_ALIAS_FLAG);
     paint2.setColor(Color.TRANSPARENT);
     paint2.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_OUT));
-    int padding = 10;
-    RectF rect = new RectF(left - padding, top - padding + actionbarHeight, right + padding,
-        bottom + padding + actionbarHeight);
+    //int padding = 10;
+    RectF rect = new RectF(left, top + actionbarHeight, right,
+        bottom + actionbarHeight);
     osCanvas.drawRect(rect, paint2);
   }
 

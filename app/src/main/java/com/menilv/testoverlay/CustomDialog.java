@@ -45,6 +45,7 @@ public class CustomDialog extends Dialog {
   private View.OnClickListener onCustomButtonClickListener;
 
   private TUTORIAL_POSITION tutorialPosition = TUTORIAL_POSITION.BELOW;
+  private boolean viewSet;
 
   public enum TUTORIAL_POSITION {
     ABOVE,
@@ -89,21 +90,27 @@ public class CustomDialog extends Dialog {
     RelativeLayout.LayoutParams params =
         new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
             ViewGroup.LayoutParams.WRAP_CONTENT);
-    params.leftMargin = left;
-    if (tutorialPosition == TUTORIAL_POSITION.ABOVE) {
-      params.topMargin = top
-          - DisplayMetricsConverter.dpToPx(
-          linearLayout.getContext().getResources().getDimension(R.dimen.padding_medium),
-          linearLayout.getContext())
-          - actionbarHeight;
+
+    if (viewSet) {
+      params.leftMargin = left;
+      if (tutorialPosition == TUTORIAL_POSITION.ABOVE) {
+        params.topMargin = top
+            - DisplayMetricsConverter.dpToPx(
+            linearLayout.getContext().getResources().getDimension(R.dimen.padding_medium),
+            linearLayout.getContext())
+            - actionbarHeight;
+      } else {
+        params.topMargin = top
+            + DisplayMetricsConverter.dpToPx(
+            linearLayout.getContext().getResources().getDimension(R.dimen.padding_medium),
+            linearLayout.getContext())
+            + actionbarHeight;
+      }
+      params.width = right - left;
     } else {
-      params.topMargin = top
-          + DisplayMetricsConverter.dpToPx(
-          linearLayout.getContext().getResources().getDimension(R.dimen.padding_medium),
-          linearLayout.getContext())
-          + actionbarHeight;
+      params.addRule(RelativeLayout.CENTER_IN_PARENT);
     }
-    params.width = right - left;
+
     linearLayout.setGravity(Gravity.CENTER);
     linearLayout.setLayoutParams(params);
 
@@ -163,6 +170,7 @@ public class CustomDialog extends Dialog {
     this.top = v.getTop();
     this.right = v.getRight();
     this.bottom = v.getBottom();
+    viewSet = true;
     return this;
   }
 
@@ -171,6 +179,7 @@ public class CustomDialog extends Dialog {
     this.top = top;
     this.right = right;
     this.bottom = bottom;
+    viewSet = true;
     return this;
   }
 
