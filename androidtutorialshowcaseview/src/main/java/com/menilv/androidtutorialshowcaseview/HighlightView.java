@@ -1,4 +1,4 @@
-package com.menilv.testoverlay;
+package com.menilv.androidtutorialshowcaseview;
 
 import android.annotation.TargetApi;
 import android.content.Context;

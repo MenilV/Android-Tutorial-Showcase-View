@@ -1,4 +1,4 @@
-package com.menilv.testoverlay.utils;
+package com.menilv.androidtutorialshowcaseview.utils;
 
 import android.content.Context;
 import android.util.DisplayMetrics;

@@ -1,4 +1,4 @@
-package com.menilv.testoverlay;
+package com.menilv.androidtutorialshowcaseview;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -15,7 +15,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.menilv.testoverlay.utils.DisplayMetricsConverter;
+import com.menilv.androidtutorialshowcaseview.utils.DisplayMetricsConverter;
 
 public class CustomDialog extends Dialog {
 
